@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAFE - Our Technology</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #667eea;
+        }
+
+        .hero {
+            padding: 4rem 0 2rem 0;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .tech-overview {
+            background: white;
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .tech-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .tech-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .tech-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .tech-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #333;
+            text-align: center;
+        }
+
+        .tech-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-features {
+            list-style: none;
+        }
+
+        .tech-features li {
+            padding: 0.5rem 0;
+            color: #555;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .tech-features li:before {
+            content: "✓";
+            color: #667eea;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .process-section {
+            background: #f8f9fa;
+            padding: 4rem 0;
+        }
+
+        .process-timeline {
+            position: relative;
+            margin-top: 3rem;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            width: 45%;
+            position: relative;
+        }
+
+        .timeline-number {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .timeline-description {
+            color: #666;
+        }
+
+        .specs-section {
+            background: white;
+            padding: 4rem 0;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .spec-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .spec-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .spec-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .innovation-section {
+            background: #f8f9fa;
+            padding: 4rem 0;
+        }
+
+        .innovation-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+            align-items: center;
+        }
+
+        .innovation-text {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .innovation-visual {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 300px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wave-animation {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.3;
+        }
+
+        .wave {
+            position: absolute;
+            width: 200%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 10px,
+                rgba(255,255,255,0.1) 10px,
+                rgba(255,255,255,0.1) 20px
+            );
+            animation: wave 3s linear infinite;
+        }
+
+        @keyframes wave {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0%); }
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .header-content { flex-direction: column; gap: 1rem; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+            .tech-grid { grid-template-columns: 1fr; }
+            .innovation-content { grid-template-columns: 1fr; }
+            .timeline-line { display: none; }
+            .timeline-item { justify-content: center; }
+            .timeline-item:nth-child(even) { flex-direction: row; }
+            .timeline-content { width: 100%; }
+            .timeline-number { position: relative; margin-bottom: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">SAFE</div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#features">Features</a></li>
+                        <li><a href="index.html#dashboard">Dashboard</a></li>
+                        <li><a href="index.html#data">Live Data</a></li>
+                        <li><a href="team.html">Team</a></li>
+                        <li><a href="technology.html">Technology</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Our Technology</h1>
+            <p>Discover the revolutionary seismic technology powering the future of traffic monitoring and smart city infrastructure</p>
+        </div>
+    </section>
+
+    <section class="tech-overview">
+        <div class="container">
+            <h2 class="section-title">Core Technologies</h2>
+            <p class="section-subtitle">Advanced systems working together to revolutionize traffic monitoring</p>
+            
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <div class="tech-icon">🌍</div>
+                    <div class="tech-title">Seismic Sensors</div>
+                    <div class="tech-description">Ultra-sensitive geophone arrays detect ground vibrations with precision down to nanometers, capturing the unique seismic signature of every vehicle.</div>
+                    <ul class="tech-features">
+                        <li>Sub-millimeter vibration detection</li>
+                        <li>Weather-resistant enclosures</li>
+                        <li>Real-time data transmission</li>
+                        <li>5-year battery life</li>
+                    </ul>
+                </div>
+                
+                <div class="tech-card">
+                    <div class="tech-icon">🧠</div>
+                    <div class="tech-title">AI Signal Processing</div>
+                    <div class="tech-description">Machine learning algorithms trained on millions of vehicle signatures distinguish between cars, trucks, motorcycles, and even detect vehicle weight.</div>
+                    <ul class="tech-features">
+                        <li>99.7% vehicle classification accuracy</li>
+                        <li>Real-time speed calculation</li>
+                        <li>Direction detection</li>
+                        <li>Adaptive noise filtering</li>
+                    </ul>
+                </div>
+                
+                <div class="tech-card">
+                    <div class="tech-icon">☁️</div>
+                    <div class="tech-title">Cloud Analytics</div>
+                    <div class="tech-description">Scalable cloud infrastructure processes terabytes of seismic data daily, providing instant insights and predictive traffic modeling.</div>
+                    <ul class="tech-features">
+                        <li>Edge computing optimization</li>
+                        <li>99.9% uptime guarantee</li>
+                        <li>Secure data encryption</li>
+                        <li>API integrations</li>
+                    </ul>
+                </div>
+                
+                <div class="tech-card">
+                    <div class="tech-icon">📡</div>
+                    <div class="tech-title">IoT Network</div>
+                    <div class="tech-description">Mesh network topology ensures reliable data transmission even in challenging environments, with automatic failover and self-healing capabilities.</div>
+                    <ul class="tech-features">
+                        <li>Multi-protocol support</li>
+                        <li>Self-healing network topology</li>
+                        <li>Low-power wireless transmission</li>
+                        <li>Remote firmware updates</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process-section">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">From ground vibrations to actionable traffic insights</p>
+            
+            <div class="process-timeline">
+                <div class="timeline-line"></div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-title">Vibration Detection</div>
+                        <div class="timeline-description">Seismic sensors buried alongside roads detect minute ground vibrations caused by vehicle movement, capturing signals as small as 0.1 nanometers.</div>
+                    </div>
+                    <div class="timeline-number">1</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-title">Signal Processing</div>
+                        <div class="timeline-description">Advanced algorithms filter noise and extract vehicle signatures, analyzing frequency patterns, amplitude, and duration to identify vehicle characteristics.</div>
+                    </div>
+                    <div class="timeline-number">2</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-title">AI Classification</div>
+                        <div class="timeline-description">Machine learning models trained on millions of vehicle signatures classify vehicle type, estimate weight, calculate speed, and determine direction of travel.</div>
+                    </div>
+                    <div class="timeline-number">3</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-title">Data Fusion</div>
+                        <div class="timeline-description">Multiple sensor readings are combined to create comprehensive traffic patterns, eliminating false positives and enhancing accuracy through sensor redundancy.</div>
+                    </div>
+                    <div class="timeline-number">4</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-title">Real-time Analytics</div>
+                        <div class="timeline-description">Cloud-based analytics engines process data streams to generate live traffic insights, predictive models, and automated alerts for traffic management systems.</div>
+                    </div>
+                    <div class="timeline-number">5</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="specs-section">
+        <div class="container">
+            <h2 class="section-title">Technical Specifications</h2>
+            <p class="section-subtitle">Industry-leading performance metrics</p>
+            
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <div class="spec-value">99.7%</div>
+                    <div class="spec-label">Detection Accuracy</div>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-value">±2%</div>
+                    <div class="spec-label">Speed Accuracy</div>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-value">0.1ms</div>
+                    <div class="spec-label">Response Time</div>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-value">5km</div>
+                    <div class="spec-label">Transmission Range</div>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-value">-40°C</div>
+                    <div class="spec-label">Operating Temperature</div>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-value">IP68</div>
+                    <div class="spec-label">Ingress Protection</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="innovation-section">
+        <div class="container">
+            <h2 class="section-title">Innovation Highlights</h2>
+            
+            <div class="innovation-content">
+                <div class="innovation-text">
+                    <h3>Breakthrough Algorithms</h3>
+                    <p>Our proprietary signal processing algorithms represent a quantum leap in seismic traffic monitoring. By combining traditional geophysical analysis with cutting-edge machine learning, we've achieved unprecedented accuracy in vehicle detection and classification.</p>
+                    
+                    <h3>Smart Sensor Network</h3>
+                    <p>Each sensor node operates as an intelligent edge device, performing real-time analysis and communicating with neighboring sensors to create a self-organizing mesh network that adapts to changing conditions.</p>
+                    
+                    <h3>Predictive Analytics</h3>
+                    <p>Beyond real-time monitoring, our system learns traffic patterns to predict congestion, optimize signal timing, and provide early warnings for traffic management authorities.</p>
+                </div>
+                
+                <div class="innovation-visual">
+                    <div class="wave-animation">
+                        <div class="wave"></div>
+                    </div>
+                    <div style="position: relative; z-index: 2;">
+                        🌊 Seismic Wave Visualization<br>
+                        Real-time Ground Vibration Analysis
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 SAFE - Seismic Traffic Awareness. Revolutionizing traffic monitoring through seismic technology.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add some interactive animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate timeline items on scroll
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            
+            const observerOptions = {
+                threshold: 0.3,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const timelineObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            timelineItems.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(50px)';
+                item.style.transition = `opacity 0.6s ease ${index * 0.2}s, transform 0.6s ease ${index * 0.2}s`;
+                timelineObserver.observe(item);
+            });
+            
+            // Animate tech cards on hover
+            document.querySelectorAll('.tech-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(-5px) scale(1)';
+                });
+            });
+            
+            // Animate spec cards with staggered effect
+            const specCards = document.querySelectorAll('.spec-card');
+            specCards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+                card.style.animation = 'fadeInUp 0.6s ease forwards';
+            });
+        });
+        
+        // Add CSS animation for spec cards
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style)
