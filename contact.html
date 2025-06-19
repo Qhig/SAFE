@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SAFE - Contact Us</title>
+    <!-- Comprehensive favicon package -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <!-- Fallback SVG favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%23667eea'/><stop offset='100%' style='stop-color:%23764ba2'/></linearGradient></defs><circle cx='50' cy='50' r='45' fill='url(%23grad)'/><text x='50' y='60' font-family='Arial, sans-serif' font-size='28' font-weight='bold' fill='white' text-anchor='middle'>S</text></svg>">
     <style>
         * {
             margin: 0;
@@ -93,9 +101,10 @@
 
         .contact-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 2fr;
             gap: 4rem;
             margin-top: 2rem;
+            align-items: start;
         }
 
         .contact-info {
@@ -126,22 +135,22 @@
         .contact-item {
             display: flex;
             align-items: center;
-            margin-bottom: 2rem;
-            padding: 1.5rem;
+            padding: 2rem;
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            border-radius: 10px;
+            border-radius: 15px;
             transition: transform 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         .contact-item:hover {
-            transform: translateX(5px);
+            transform: translateY(-5px);
         }
 
         .contact-icon {
-            font-size: 2rem;
-            margin-right: 1rem;
-            width: 60px;
-            height: 60px;
+            font-size: 2.5rem;
+            margin-right: 1.5rem;
+            width: 70px;
+            height: 70px;
             background: linear-gradient(45deg, #667eea, #764ba2);
             color: white;
             border-radius: 50%;
@@ -153,10 +162,12 @@
         .contact-details h3 {
             color: #333;
             margin-bottom: 0.5rem;
+            font-size: 1.3rem;
         }
 
         .contact-details p {
             color: #666;
+            font-size: 1.1rem;
         }
 
         .form-group {
@@ -218,29 +229,6 @@
             color: #333;
             margin-bottom: 1.5rem;
             text-align: center;
-        }
-
-        .map-section {
-            background: #f8f9fa;
-            padding: 3rem 0;
-        }
-
-        .map-container {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin-top: 2rem;
-        }
-
-        .map-placeholder {
-            height: 400px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
         }
 
         .success-message {
@@ -312,31 +300,6 @@
                             <p>contact@safe-seismic.com</p>
                         </div>
                     </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">📞</div>
-                        <div class="contact-details">
-                            <h3>Call Us</h3>
-                            <p>+1 (555) 123-SAFE</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">📍</div>
-                        <div class="contact-details">
-                            <h3>Visit Us</h3>
-                            <p>123 Innovation Drive<br>Tech Valley, CA 94000</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">🕒</div>
-                        <div class="contact-details">
-                            <h3>Business Hours</h3>
-                            <p>Monday - Friday: 9:00 AM - 6:00 PM PST<br>
-                               Saturday: 10:00 AM - 4:00 PM PST</p>
-                        </div>
-                    </div>
                 </div>
                 
                 <div class="contact-form">
@@ -386,17 +349,6 @@
         </div>
     </section>
 
-    <section class="map-section">
-        <div class="container">
-            <h2 class="section-title">Find Us</h2>
-            <div class="map-container">
-                <div class="map-placeholder">
-                    🗺️ Interactive Map Coming Soon - Located in Tech Valley, California
-                </div>
-            </div>
-        </div>
-    </section>
-
     <footer>
         <div class="container">
             <p>&copy; 2024 SAFE - Seismic Traffic Awareness. Revolutionizing traffic monitoring through seismic technology.</p>
@@ -435,15 +387,13 @@
             }, 5000);
         });
         
-        // Add some interactive effects
-        document.querySelectorAll('.contact-item').forEach(item => {
-            item.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateX(10px)';
-            });
-            
-            item.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateX(0)';
-            });
+        // Add hover effect to email contact item
+        document.querySelector('.contact-item').addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-8px)';
+        });
+        
+        document.querySelector('.contact-item').addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(-5px)';
         });
     </script>
 </body>
